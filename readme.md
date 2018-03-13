@@ -6,37 +6,41 @@ Step 1
 Copy the git repository address and clone it on your serve location var/www/html/
     
     git clone 'https://git_repository_address'
-    sudo apt-get install nodejs
 
 Step 2
 
-Create one folder on your local directory and install npm using terminal commands.
+Go to the login-system folder using  
 
-    npm install
+    cd login-system
 
 Step 3
 
-Create helloworld.js file in your local folder/directory paste the bellow code on this file.
+Install composer and external dependancy using composer install
     
-    var http = require("http");
-   
-    http.createServer(function (request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Hello World\n');
-    }).listen(8081);
-    
-    console.log('Server running at http://127.0.0.1:8081/');
+    composer install or
+    composer update
 
 Step 4
 
-Open your terminal. Go to your local directory path. Execute/run the helloworld.js to start the server as follows 
+Create database name as [ loginSystem ] and put credential to .env (environment) file
 
-    node helloworld.js
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=loginSystem
+    DB_USERNAME=xxxx
+    DB_PASSWORD=xxxx
     
 Step 5 
 
-Check out your output.
+Generate key for your application using following command
 
-    Server running at http://127.0.0.1:8081/
+    php artisan key:generate
     
-Go to the above ( http://127.0.0.1:8081/ ) ipaddress and you will get final output.
+Step 6 
+
+Finally, run the application using 
+
+    php artisan serve
+    
+Go to the above ( http://127.0.0.1:8000/ ) ipaddress and you will get final output.
