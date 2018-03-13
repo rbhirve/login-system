@@ -14,9 +14,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
-<body>
+<body style="background-color: floralwhite">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: aqua">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Login-System
@@ -68,6 +68,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/bootstarp.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>

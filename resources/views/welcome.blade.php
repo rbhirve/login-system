@@ -66,8 +66,8 @@
             }
         </style>
     </head>
-    <body>
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <body style="background-color:floralwhite">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: aqua">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Login-System
@@ -105,13 +105,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card">
+                    <div class="card" style="background-color: #E5E5E5">
                         <div class="card-header">{{ __('Welcome to Login-Signup System') }}</div>
         
                         <div class="card-body">
                             <div class="content">
                                 <div class="title m-b-md">
-                                    Login System
+                                    Login System <br>
+                                    using <br>
+                                    Laravel
                                 </div>
                             </div>
                         </div>
