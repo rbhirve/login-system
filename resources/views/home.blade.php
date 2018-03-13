@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="background-color: #E5E5E5">
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
@@ -13,7 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    You are logged in!
+                    <center>
+                        <h2 style="color: red">Hello {{ Auth::user()->name }}, you are logged in!</h2>
+                        <h3>Make sure your detaits:</h3><br>
+                        Email: {{ Auth::user()->email }} <br>
+                        Address: {{ Auth::user()->address }} <br>
+                        Gender: {{ Auth::user()->gender }} <br>
+                        Contact: {{ Auth::user()->contact }} <br>
+                    </center>
                 </div>
             </div>
         </div>
