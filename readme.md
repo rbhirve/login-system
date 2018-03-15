@@ -33,11 +33,17 @@ Create database name as [ loginSystem ] and put credential to .env (environment)
     
 Step 5 
 
+Run migration on your system
+
+    php artisan migrate
+
+Step 6 
+
 Generate key for your application using following command
 
     php artisan key:generate
     
-Step 6 
+Step 7 
 
 Finally, run the application using 
 
