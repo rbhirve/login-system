@@ -8,14 +8,14 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form id="form-submit" action="#">
                         @csrf
-
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback">
@@ -116,4 +116,54 @@
         </div>
     </div>
 </div>
+
+<script>
+
+        $(document).ready(function() {
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            // $('#form-submit').click(function(e){
+            //     $('input[name=name]').keyup(function() {
+            //         if ($(this).val().length == 0) {
+            //             $(this).parents('p').addClass('is-invalid');
+            //         }
+            //     });
+            // });
+
+            $('#form-submit').on('submit', function(event){
+                event.preventDefault();
+
+                var formData = {
+                    _token   : "{{ csrf_token() }}",
+                    name     : $('input[name=name]').val(),
+                    email    : $('input[name=email]').val(),
+                    address  : $('input[name=address]').val(),
+                    gender   : $('input[name=gender]').val(),
+                    contact  : $('input[name=contact]').val(),
+                    password : $('input[name=password]').val()
+                }
+
+                $.ajax({
+                    type     : "POST",
+                    url      : "/register",
+                    data     : formData,
+                    cache    : false,
+
+                    success  : function(responce) {
+                        console.log(responce);
+                        alert('success');
+                    },
+                    error    : function(responce) {
+                        alert('Validation Failed');
+                    }
+                })
+                return false;
+            });
+        });
+</script>
+
 @endsection
