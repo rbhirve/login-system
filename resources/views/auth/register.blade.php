@@ -110,6 +110,16 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <p id="form-name" style="color:red"></p>
+                                <p id="form-email" style="color:red"></p>
+                                <p id="form-address" style="color:red"></p>
+                                <p id="form-contact" style="color:red"></p>
+                                <p id="form-password" style="color:red"></p>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -126,13 +136,62 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            // $('#form-submit').click(function(e){
-            //     $('input[name=name]').keyup(function() {
-            //         if ($(this).val().length == 0) {
-            //             $(this).parents('p').addClass('is-invalid');
-            //         }
-            //     });
-            // });
+            
+
+            function validate() {
+                if($('input[name=name]').val() == "") {
+                    $('input[name=name]').addClass('is-invalid');
+                    $('#form-name').html('Please enter the name');
+                } else{
+                    $('input[name=name]').removeClass('is-invalid');
+                    $('#form-name').html('');
+                }
+                if($('input[name=email]').val() == "") {
+                    $('input[name=email]').addClass('is-invalid');
+                    $('#form-email').html('Please enter the valid email');
+                } else{
+                    $('input[name=email]').removeClass('is-invalid');
+                    $('#form-email').html('');
+                }
+                if($('input[name=address]').val() == "") {
+                    $('input[name=address]').addClass('is-invalid');
+                    $('#form-address').html('Please enter the address');
+                } else{
+                    $('input[name=address]').removeClass('is-invalid');
+                    $('#form-address').html('');
+                }
+                if($('input[name=contact]').val() == "") {
+                    $('input[name=contact]').addClass('is-invalid');
+                    $('#form-contact').html('Please enter the contact number');
+                } else {
+                    $('input[name=contact]').removeClass('is-invalid');
+                    $('#form-contact').html('');
+                }
+                if($('input[name=password]').val() == "") {
+                    $('input[name=password]').addClass('is-invalid');
+                    $('#form-password').html('Please enter the password');
+                    $('input[name=password_confirmation]').addClass('is-invalid');
+                } else{
+                    $('input[name=password]').removeClass('is-invalid');
+                    $('input[name=password_confirmation]').removeClass('is-invalid');
+                    $('#form-password').html('');
+                }
+
+                if($('input[name=password]').val() != $('input[name=password_confirmation]').val()) {
+                    $('input[name=password]').addClass('is-invalid');
+                    $('input[name=password_confirmation]').addClass('is-invalid');
+                    $('#form-password').html('Please conform the correct password');
+                } else{
+                    $('input[name=name]').removeClass('is-invalid');
+                    $('#form-name').html('');
+                }
+                return true;
+            }
+
+            window.addEventListener("click", function () {
+                validate();
+            }, false);
+
 
             $('#form-submit').on('submit', function(event){
                 event.preventDefault();
